@@ -1,0 +1,64 @@
+Arguments: 
+  /home/jpag/.nvm/versions/node/v22.15.0/bin/node /home/jpag/.yarn/bin/yarn.js add @zkemail/zkemail-nr
+
+PATH: 
+  /home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.bb:/home/jpag/.cairo/target/release:/home/jpag/.wasmedge/bin:/home/jpag/.local/share/pnpm:/home/jpag/.yarn/bin:/home/jpag/.config/yarn/global/node_modules/.bin:/home/jpag/.nvm/versions/node/v22.15.0/bin:/home/jpag/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/home/jpag/.local/share/solana/install/active_release/bin:/home/jpag/.cargo/bin:/home/jpag/.local/bin:/home/jpag/bin:/home/jpag/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/go/bin:/home/jpag/go/bin:/home/jpag/.bin:/home/jpag/.foundry/bin:/home/jpag/.nargo/bin:/home/jpag/.huff/bin:/home/jpag/bin:/home/jpag/Programs/:/home/jpag/.aztec/bin:/home/jpag/.bb
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  22.15.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@zkemail%2fzkemail-nr: Not found
+      at params.callback [as _callback] (/home/jpag/.yarn/lib/cli.js:66145:18)
+      at self.callback (/home/jpag/.yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:518:28)
+      at Request.<anonymous> (/home/jpag/.yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:518:28)
+      at IncomingMessage.<anonymous> (/home/jpag/.yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:632:28)
+      at IncomingMessage.emit (node:events:530:35)
+      at endReadableNT (node:internal/streams/readable:1698:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+
+npm manifest: 
+  {
+    "name": "hardhat-project",
+    "scripts": {
+      "test": "hardhat test"
+    },
+    "devDependencies": {
+      "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+      "@nomicfoundation/hardhat-ethers": "^3.0.0",
+      "@nomicfoundation/hardhat-ignition": "^0.15.9",
+      "@nomicfoundation/hardhat-ignition-ethers": "^0.15.0",
+      "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+      "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+      "@nomicfoundation/hardhat-verify": "^2.0.0",
+      "@nomicfoundation/ignition-core": "^0.15.9",
+      "@typechain/ethers-v6": "^0.5.0",
+      "@typechain/hardhat": "^9.0.0",
+      "@types/chai": "^4.2.0",
+      "chai": "^4.2.0",
+      "ethers": "^6.13.5",
+      "hardhat": "^2.22.18",
+      "hardhat-gas-reporter": "^1.0.8",
+      "solidity-coverage": "^0.8.1",
+      "ts-node": "^10.9.2",
+      "typechain": "^8.3.0",
+      "@aztec/bb.js": "0.82.2",
+      "@noir-lang/noir_js": "1.0.0-beta.3",
+      "@noir-lang/noirc_abi": "^1.0.0-beta.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

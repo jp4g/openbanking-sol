@@ -1,0 +1,8 @@
+[package]
+name = "openbanking.sol"
+type = "bin"
+authors = [""]
+
+[dependencies]
+openbanking = { git = "https://github.com/attested-frontiers/openbanking.nr-circuit", tag = "main", directory = "lib" }
+zkemail = { git = "https://github.com/zkemail/zkemail.nr", tag = "v0.4.4", directory = "lib" } 
