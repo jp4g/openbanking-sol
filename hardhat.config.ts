@@ -9,6 +9,11 @@ const config: HardhatUserConfig = {
     hardhat: {
       allowUnlimitedContractSize: true
     }
+  },
+  mocha: {
+    gas: 120000000,
+    blockGasLimit: 1200000000,
+    timeout: 300000
   }
 };
 
