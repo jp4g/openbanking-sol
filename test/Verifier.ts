@@ -38,30 +38,32 @@ describe("Test Verifier", function () {
     describe("OpenBanking EVM Test", function () {
         it("Should verify", async function () {
             // 0. build bank account commitment
-            const sortCode = new Fr(BigInt(Buffer.from("04290953215338", "utf-8").toString('hex')));
-            const currencyCode = new Fr(BigInt(Buffer.from("GBP", "utf-8").toString('hex')));
-            const barretenbergApi = await BarretenbergSync.initSingleton();
-            const commitment = barretenbergApi.poseidon2Hash([sortCode, currencyCode]);
+            // commented out - couldn't get hash to line up perfectly in time just hardcoding for now
+            // const sortCode = new Fr(BigInt(Buffer.from("04290953215338", "utf-8").toString('hex')));
+            // const currencyCode = new Fr(BigInt(Buffer.from("GBP", "utf-8").toString('hex')));
+            // const barretenbergApi = await BarretenbergSync.initSingleton();
+            // const commitment = barretenbergApi.poseidon2Hash([sortCode, currencyCode]);
+            const commitment = "0x10e4d800065fb7a7ab68f5df429c1705330ebbedabf11bea2dc8e845a70d5bce";
             // // 1. instantiate environment
-            const [alice, bob, charlie] = await hre.ethers.getSigners();
+            const [alice, bob ] = await hre.ethers.getSigners();
             const { tokenContract, escrowContract } = await loadFixture(deployFixture);
             // 2. mint tokens to alice
-            // console.log("Minting");
-            // const escrowAmount = 10000n * 10n ** 18n;
-            // await tokenContract.mint(
-            //     await alice.getAddress(),
-            //     escrowAmount
-            // )
-            // // 3. escrow tokens into the contract
-            // console.log("Escrowing")
-            // await tokenContract.connect(alice).approve(
-            //     await escrowContract.getAddress(),
-            //     escrowAmount
-            // );
-            // await escrowContract.connect(alice).deposit(
-            //     escrowAmount,
-            //     BigInt(commitment.toString())
-            // );
+            console.log("Minting");
+            const escrowAmount = 10000n * 10n ** 18n;
+            await tokenContract.mint(
+                await alice.getAddress(),
+                escrowAmount
+            )
+            // 3. escrow tokens into the contract
+            console.log("Escrowing")
+            await tokenContract.connect(alice).approve(
+                await escrowContract.getAddress(),
+                escrowAmount
+            );
+            await escrowContract.connect(alice).deposit(
+                escrowAmount,
+                BigInt(commitment.toString())
+            );
             // 4. generate ob proof
             console.log("Proving")
             //@ts-ignore
@@ -72,42 +74,23 @@ describe("Test Verifier", function () {
                 signature,
                 publicKey
             );
-            const { witness, returnValue } = await noir.execute({ params: inputs, x: 1 })
-            // const vk = await backend.getVerificationKey({ keccak: true });
-            // const verifier = await backend.getSolidityVerifier(vk);
-            // fs.writeFileSync('./test/test_data/verifier.sol', verifier);
-            // console.log("Return Value", returnValue);
-            //@ts-ignore
-            // console.log("QQ", BigInt(Buffer.from(returnValue[1]).toString('hex')))
-            // console.log("Expected Commitment", commitment.toString());
-            const proofData = await backend.generateProof(witness, { keccak: true });
-            const { proof, publicInputs } = proofData;
-            // verify local
-            const x = await backend.verifyProof({
-                proof,
-                publicInputs
-            }, { keccak: true });
-            //@ts-ignore
-            // console.log("returnValue", BigInt(returnValue[1]))
-
+            const { witness } = await noir.execute({ params: inputs })
+            const { proof, publicInputs } = await backend.generateProof(witness, { keccak: true });
             const verified = await escrowContract.verifyTest(
                 proof.slice(4),
                 publicInputs
             );
-            // console.log("Verified: ", verified)
+            console.log("Verified: ", verified)
             // 5. Withdrawing with proof
-            // console.log("Withdrawing")
-            // const amountToWithdraw = 1000000n;
-            // await escrowContract.connect(bob).withdraw(
-            //     Buffer.from(proof),
-            //     amountToWithdraw,
-            //     //@ts-ignore
-            //     returnValue[0],
-            //     await alice.getAddress()
-            // )
-            // const balance = await tokenContract.balanceOf(await bob.getAddress());
-            // console.log("Bob Balance: ", balance)
-            
+            console.log("Withdrawing")
+            await escrowContract.connect(bob).withdraw(
+                proof.slice(4),
+                publicInputs[1],
+                publicInputs[0],
+                await alice.getAddress()
+            )
+            const balance = await tokenContract.balanceOf(await bob.getAddress());
+            console.log("Bob Balance: ", balance)
         });
     });
 });

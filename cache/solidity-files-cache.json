@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/jpag/Playground/consensus/contracts/Escrow.sol": {
-      "lastModificationDate": 1747365204338,
-      "contentHash": "6314fa6e66bf4e734f0ece21ae642516",
+      "lastModificationDate": 1747365840039,
+      "contentHash": "4396473fc5cdb4b948a7aa5d4f74f00a",
       "sourceName": "contracts/Escrow.sol",
       "solcConfig": {
         "version": "0.8.28",
@@ -41,8 +41,8 @@
       ]
     },
     "/home/jpag/Playground/consensus/contracts/Verifier.sol": {
-      "lastModificationDate": 1747345951356,
-      "contentHash": "faa09004c40c0fdbe97f0af648124ced",
+      "lastModificationDate": 1747365818526,
+      "contentHash": "93a29d4373113ae74f4913fa4a42c482",
       "sourceName": "contracts/Verifier.sol",
       "solcConfig": {
         "version": "0.8.28",

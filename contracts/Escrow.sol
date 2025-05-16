@@ -52,6 +52,8 @@ contract OBEscrow {
         publicInputs[1] = bytes32(_amount);
         // verify the proof
         require(verifier.verify(_proof, publicInputs), "Invalid proof");
+        // adjust amount (payment token is 10^18, proof outputs 10^12)
+        _amount = _amount * 10**12;
         // transfer tokens out
         EscrowData storage escrow = escrowData[_from];
         require(escrow.amount >= _amount, "Insufficient balance");
