@@ -58,7 +58,7 @@ contract MockLendingPool {
     function withdraw(address assetAddress, uint256 amount, address to) external returns (uint256) {
         require(assetAddress == address(asset), "Invalid asset");
         aToken.burn(msg.sender, amount);
-        // Calculate yield (10% for simplicity)
+        // Simulated yield (10% for simplicity)
         uint256 yield = amount / 10;
         uint256 totalAmount = amount + yield;
         require(asset.transfer(to, totalAmount), "Transfer failed");

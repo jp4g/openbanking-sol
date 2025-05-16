@@ -28,6 +28,8 @@ export interface OBEscrowInterface extends Interface {
       | "deposit"
       | "escrowData"
       | "paymentToken"
+      | "verifier"
+      | "verifyTest"
       | "withdraw"
   ): FunctionFragment;
 
@@ -44,9 +46,14 @@ export interface OBEscrowInterface extends Interface {
     functionFragment: "paymentToken",
     values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "verifier", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "verifyTest",
+    values: [BytesLike, BytesLike[]]
+  ): string;
   encodeFunctionData(
     functionFragment: "withdraw",
-    values: [BigNumberish, BigNumberish]
+    values: [BytesLike, BigNumberish, BigNumberish, AddressLike]
   ): string;
 
   decodeFunctionResult(functionFragment: "aavePool", data: BytesLike): Result;
@@ -56,6 +63,8 @@ export interface OBEscrowInterface extends Interface {
     functionFragment: "paymentToken",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "verifier", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "verifyTest", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 }
 
@@ -118,8 +127,21 @@ export interface OBEscrow extends BaseContract {
 
   paymentToken: TypedContractMethod<[], [string], "view">;
 
+  verifier: TypedContractMethod<[], [string], "view">;
+
+  verifyTest: TypedContractMethod<
+    [_proof: BytesLike, _publicInputs: BytesLike[]],
+    [boolean],
+    "view"
+  >;
+
   withdraw: TypedContractMethod<
-    [_amountToWithdraw: BigNumberish, _userCommitment: BigNumberish],
+    [
+      _proof: BytesLike,
+      _amount: BigNumberish,
+      _commitment: BigNumberish,
+      _from: AddressLike
+    ],
     [void],
     "nonpayable"
   >;
@@ -149,9 +171,24 @@ export interface OBEscrow extends BaseContract {
     nameOrSignature: "paymentToken"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
+    nameOrSignature: "verifier"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "verifyTest"
+  ): TypedContractMethod<
+    [_proof: BytesLike, _publicInputs: BytesLike[]],
+    [boolean],
+    "view"
+  >;
+  getFunction(
     nameOrSignature: "withdraw"
   ): TypedContractMethod<
-    [_amountToWithdraw: BigNumberish, _userCommitment: BigNumberish],
+    [
+      _proof: BytesLike,
+      _amount: BigNumberish,
+      _commitment: BigNumberish,
+      _from: AddressLike
+    ],
     [void],
     "nonpayable"
   >;

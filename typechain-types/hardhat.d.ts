@@ -62,10 +62,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.PaymentToken__factory>;
     getContractFactory(
-      name: "BaseHonkVerifier",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.BaseHonkVerifier__factory>;
-    getContractFactory(
       name: "HonkVerifier",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.HonkVerifier__factory>;
@@ -135,11 +131,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.PaymentToken>;
     getContractAt(
-      name: "BaseHonkVerifier",
-      address: string | ethers.Addressable,
-      signer?: ethers.Signer
-    ): Promise<Contracts.BaseHonkVerifier>;
-    getContractAt(
       name: "HonkVerifier",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -198,10 +189,6 @@ declare module "hardhat/types/runtime" {
       name: "PaymentToken",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PaymentToken>;
-    deployContract(
-      name: "BaseHonkVerifier",
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.BaseHonkVerifier>;
     deployContract(
       name: "HonkVerifier",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -271,11 +258,6 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PaymentToken>;
-    deployContract(
-      name: "BaseHonkVerifier",
-      args: any[],
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.BaseHonkVerifier>;
     deployContract(
       name: "HonkVerifier",
       args: any[],

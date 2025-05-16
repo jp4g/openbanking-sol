@@ -3,7 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.21", // Adjust to match your contract's Solidity version
+    version: "0.8.27", // Adjust to match your contract's Solidity version
     settings: {
       optimizer: {
         enabled: true,
@@ -18,6 +18,7 @@ const config: HardhatUserConfig = {
         mnemonic: "test test test test test test test test test test test junk",
         count: 10, // Number of test accounts
       },
+      allowUnlimitedContractSize: true
     },
   },
   paths: {
@@ -26,6 +27,11 @@ const config: HardhatUserConfig = {
     cache: "./cache",
     artifacts: "./artifacts",
   },
+  mocha: {
+    gas: 120000000,
+    blockGasLimit: 1200000000,
+    timeout: 300000
+  }
 };
 
 export default config;

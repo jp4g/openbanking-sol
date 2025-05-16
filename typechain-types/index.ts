@@ -30,8 +30,6 @@ export type { MockLendingPool } from "./contracts/MockAave.sol/MockLendingPool";
 export { MockLendingPool__factory } from "./factories/contracts/MockAave.sol/MockLendingPool__factory";
 export type { PaymentToken } from "./contracts/PaymentToken";
 export { PaymentToken__factory } from "./factories/contracts/PaymentToken__factory";
-export type { BaseHonkVerifier } from "./contracts/Verifier.sol/BaseHonkVerifier";
-export { BaseHonkVerifier__factory } from "./factories/contracts/Verifier.sol/BaseHonkVerifier__factory";
 export type { HonkVerifier } from "./contracts/Verifier.sol/HonkVerifier";
 export { HonkVerifier__factory } from "./factories/contracts/Verifier.sol/HonkVerifier__factory";
 export type { IVerifier } from "./contracts/Verifier.sol/IVerifier";

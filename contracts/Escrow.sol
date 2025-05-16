@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-// import "./Verifier.sol"; // Review how Verifier.sol integrates with Aave deposits/withdrawals
+import "./Verifier.sol";
 
 // Interface for Aave Pool
 interface IAavePool {
@@ -22,11 +22,10 @@ interface IAavePool {
 
 contract OBEscrow {
 
-    // HonkVerifier public verifier = new HonkVerifier(); // Review integration
-    // address public verifier; // Review: This seems to be a duplicate or needs renaming
-
     address public paymentToken;
     IAavePool public aavePool;
+    HonkVerifier public verifier = new HonkVerifier();
+
 
     struct EscrowData {
         uint256 amount; // Represents amount of underlying asset supplied to Aave
@@ -41,7 +40,7 @@ contract OBEscrow {
         paymentToken = _paymentToken;
         aavePool = IAavePool(_aavePoolAddress);
     }
-    
+
     function deposit(uint256 _amount, uint256 _commitment) external {
         require(_amount > 0, "Amount must be greater than zero");
 
@@ -55,7 +54,6 @@ contract OBEscrow {
         IERC20(paymentToken).approve(address(aavePool), transferredAmount);
 
         // 3. Supply tokens to Aave Pool
-        // The escrow contract (this) will receive the aTokens
         aavePool.supply(paymentToken, transferredAmount, address(this), 0);
 
         // 4. Update escrow data for the depositor (msg.sender)
@@ -67,43 +65,47 @@ contract OBEscrow {
     }
 
     function withdraw(
-        // bytes calldata _proof, // Proof verification needs to be integrated
-        uint256 _amountToWithdraw,
-        uint256 _userCommitment // Identifier for the user's specific escrowed funds/commitment
-        // address _from // Original design had _from; for simplicity, assuming msg.sender withdraws their own
+        bytes calldata _proof, // Proof verification needs to be integrated
+        uint256 _amount,
+        uint256 _commitment, // Identifier for the user's specific escrowed funds/commitment
+        address _from // Original design had _from; for simplicity, assuming msg.sender withdraws their own
     ) external {
-        // TODO: Integrate ZK proof verification using _proof, _userCommitment, and _amountToWithdraw
-        // The verifier would confirm that msg.sender is authorized for this withdrawal against _userCommitment.
-        // For example:
-        // bytes32[] memory publicInputs = new bytes32[](2);
-        // publicInputs[0] = bytes32(_userCommitment);
-        // publicInputs[1] = bytes32(_amountToWithdraw);
-        // require(verifier.verify(_proof, publicInputs), "Invalid proof");
-
-        EscrowData storage escrow = escrowData[msg.sender]; // Assumes msg.sender is withdrawing their own funds
-
-        require(escrow.amount >= _amountToWithdraw, "Insufficient balance in Aave");
-        // Optional: Check commitment if it's used to identify specific deposit tranches
-        // require(escrow.commitment == _userCommitment, "Invalid commitment for withdrawal");
-
-
-        // 1. Withdraw from Aave Pool to this escrow contract
-        uint256 actualWithdrawnAmount = aavePool.withdraw(paymentToken, _amountToWithdraw, address(this));
-        // The actualWithdrawnAmount includes the yield, so we don't need to check for exact match
-        require(actualWithdrawnAmount >= _amountToWithdraw, "Aave withdrawal failed");
-
-        // 2. Transfer tokens from this escrow contract to the msg.sender (recipient)
+        // 1: verify proof
+        bytes32[] memory publicInputs = new bytes32[](2);
+        publicInputs[0] = bytes32(_commitment);
+        publicInputs[1] = bytes32(_amount);
+        require(verifier.verify(_proof, publicInputs), "Invalid proof");
+        // 2. adjust amount (payment token is 10^18, proof outputs 10^12)
+        _amount = _amount * 10**12;
+        // 3. check escrow match
+        EscrowData storage escrow = escrowData[_from];
+        require(escrow.amount >= _amount, "Insufficient balance");
         require(
-            IERC20(paymentToken).transfer(msg.sender, actualWithdrawnAmount),
-            "Token transfer to recipient failed"
+            escrow.commitment == _commitment,
+            "Invalid recipient commitment"
+        );
+        // 4. Withdraw from Aave Pool to escrow contract
+        aavePool.withdraw(paymentToken, _amount, address(this));
+        // 5. Transfer tokens from escrow contract to the user
+        require(
+            IERC20(paymentToken).transfer(msg.sender, _amount),
+            "Token transfer failed"
         );
 
-        // 3. Update escrow data
-        escrow.amount -= _amountToWithdraw;
+        // 6. Update escrow data
+        escrow.amount -= _amount;
+    }
 
-        // If a commitment is tied to a specific deposit and should be cleared or reduced:
-        // if (escrow.amount == 0) {
-        //     escrow.commitment = 0; // Or reset as appropriate
-        // }
+    function verifyTest(
+        bytes calldata _proof,
+        bytes32[] calldata _publicInputs
+    )
+        public
+        view
+        returns (
+            bool
+        )
+    {
+        return verifier.verify(_proof, _publicInputs);
     }
 }
