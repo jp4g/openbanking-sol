@@ -1,4 +1,5 @@
 # OpenBanking Solidity Onramp
+Uses mocked OFAC sanction list with Forte hooks to provide compliant onramping
 
 ## Run instructions
 1. `(cd circuit && ./build.sh)`
@@ -11,3 +12,4 @@ Runs a full, e2e demonstration of
 3. proving correctness of openbanking proof in Noir
 4. verifying openbanking proof in solidity
 5. withdrawing funds locked in aave and releasing escrow (onramp perspective, recieved tokens in exchange for bank fiat)
+
