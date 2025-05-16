@@ -24,6 +24,7 @@ import type {
 export interface OBEscrowInterface extends Interface {
   getFunction(
     nameOrSignature:
+      | "aavePool"
       | "deposit"
       | "escrowData"
       | "paymentToken"
@@ -32,6 +33,7 @@ export interface OBEscrowInterface extends Interface {
       | "withdraw"
   ): FunctionFragment;
 
+  encodeFunctionData(functionFragment: "aavePool", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "deposit",
     values: [BigNumberish, BigNumberish]
@@ -54,6 +56,7 @@ export interface OBEscrowInterface extends Interface {
     values: [BytesLike, BigNumberish, BigNumberish, AddressLike]
   ): string;
 
+  decodeFunctionResult(functionFragment: "aavePool", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "escrowData", data: BytesLike): Result;
   decodeFunctionResult(
@@ -108,6 +111,8 @@ export interface OBEscrow extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
+  aavePool: TypedContractMethod<[], [string], "view">;
+
   deposit: TypedContractMethod<
     [_amount: BigNumberish, _commitment: BigNumberish],
     [void],
@@ -145,6 +150,9 @@ export interface OBEscrow extends BaseContract {
     key: string | FunctionFragment
   ): T;
 
+  getFunction(
+    nameOrSignature: "aavePool"
+  ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "deposit"
   ): TypedContractMethod<

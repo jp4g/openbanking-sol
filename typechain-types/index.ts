@@ -18,8 +18,16 @@ export type { IERC20Metadata } from "./@openzeppelin/contracts/token/ERC20/exten
 export { IERC20Metadata__factory } from "./factories/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata__factory";
 export type { IERC20 } from "./@openzeppelin/contracts/token/ERC20/IERC20";
 export { IERC20__factory } from "./factories/@openzeppelin/contracts/token/ERC20/IERC20__factory";
+export type { IAavePool } from "./contracts/Escrow.sol/IAavePool";
+export { IAavePool__factory } from "./factories/contracts/Escrow.sol/IAavePool__factory";
 export type { OBEscrow } from "./contracts/Escrow.sol/OBEscrow";
 export { OBEscrow__factory } from "./factories/contracts/Escrow.sol/OBEscrow__factory";
+export type { MockAsset } from "./contracts/MockAave.sol/MockAsset";
+export { MockAsset__factory } from "./factories/contracts/MockAave.sol/MockAsset__factory";
+export type { MockAToken } from "./contracts/MockAave.sol/MockAToken";
+export { MockAToken__factory } from "./factories/contracts/MockAave.sol/MockAToken__factory";
+export type { MockLendingPool } from "./contracts/MockAave.sol/MockLendingPool";
+export { MockLendingPool__factory } from "./factories/contracts/MockAave.sol/MockLendingPool__factory";
 export type { PaymentToken } from "./contracts/PaymentToken";
 export { PaymentToken__factory } from "./factories/contracts/PaymentToken__factory";
 export type { HonkVerifier } from "./contracts/Verifier.sol/HonkVerifier";

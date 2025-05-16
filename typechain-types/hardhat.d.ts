@@ -38,9 +38,25 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
+      name: "IAavePool",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAavePool__factory>;
+    getContractFactory(
       name: "OBEscrow",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.OBEscrow__factory>;
+    getContractFactory(
+      name: "MockAsset",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MockAsset__factory>;
+    getContractFactory(
+      name: "MockAToken",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MockAToken__factory>;
+    getContractFactory(
+      name: "MockLendingPool",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MockLendingPool__factory>;
     getContractFactory(
       name: "PaymentToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -85,10 +101,30 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20>;
     getContractAt(
+      name: "IAavePool",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAavePool>;
+    getContractAt(
       name: "OBEscrow",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.OBEscrow>;
+    getContractAt(
+      name: "MockAsset",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MockAsset>;
+    getContractAt(
+      name: "MockAToken",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MockAToken>;
+    getContractAt(
+      name: "MockLendingPool",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MockLendingPool>;
     getContractAt(
       name: "PaymentToken",
       address: string | ethers.Addressable,
@@ -130,9 +166,25 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
+      name: "IAavePool",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAavePool>;
+    deployContract(
       name: "OBEscrow",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.OBEscrow>;
+    deployContract(
+      name: "MockAsset",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockAsset>;
+    deployContract(
+      name: "MockAToken",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockAToken>;
+    deployContract(
+      name: "MockLendingPool",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockLendingPool>;
     deployContract(
       name: "PaymentToken",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -177,10 +229,30 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
+      name: "IAavePool",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAavePool>;
+    deployContract(
       name: "OBEscrow",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.OBEscrow>;
+    deployContract(
+      name: "MockAsset",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockAsset>;
+    deployContract(
+      name: "MockAToken",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockAToken>;
+    deployContract(
+      name: "MockLendingPool",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockLendingPool>;
     deployContract(
       name: "PaymentToken",
       args: any[],

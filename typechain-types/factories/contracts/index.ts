@@ -2,5 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as escrowSol from "./Escrow.sol";
+export * as mockAaveSol from "./MockAave.sol";
 export * as verifierSol from "./Verifier.sol";
 export { PaymentToken__factory } from "./PaymentToken__factory";

@@ -2,17 +2,17 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/jpag/Playground/consensus/contracts/Escrow.sol": {
-      "lastModificationDate": 1747365840039,
-      "contentHash": "4396473fc5cdb4b948a7aa5d4f74f00a",
+      "lastModificationDate": 1747367469317,
+      "contentHash": "bf9afc6c94217b32cdf60d0b09c0927d",
       "sourceName": "contracts/Escrow.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -37,21 +37,22 @@
         "^0.8.0"
       ],
       "artifacts": [
+        "IAavePool",
         "OBEscrow"
       ]
     },
     "/home/jpag/Playground/consensus/contracts/Verifier.sol": {
-      "lastModificationDate": 1747365818526,
+      "lastModificationDate": 1747366909219,
       "contentHash": "93a29d4373113ae74f4913fa4a42c482",
       "sourceName": "contracts/Verifier.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -84,17 +85,17 @@
       ]
     },
     "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1747324947197,
+      "lastModificationDate": 1747365624155,
       "contentHash": "8f19f64d2adadf448840908bbaf431c8",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -120,17 +121,17 @@
       ]
     },
     "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1747324947197,
+      "lastModificationDate": 1747365624737,
       "contentHash": "794db3115001aa372c79326fcfd44b1f",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -158,17 +159,17 @@
       ]
     },
     "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1747324947197,
+      "lastModificationDate": 1747365624155,
       "contentHash": "57d79df281f57bbb1b09214c7914f877",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -199,17 +200,17 @@
       ]
     },
     "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1747324947161,
+      "lastModificationDate": 1747365622697,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -235,17 +236,17 @@
       ]
     },
     "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
-      "lastModificationDate": 1747324947161,
+      "lastModificationDate": 1747365622696,
       "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -277,13 +278,13 @@
       "contentHash": "fd0eb48022c568e9105ee783667b8290",
       "sourceName": "contracts/PaymentToken.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.27",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -308,6 +309,46 @@
       ],
       "artifacts": [
         "PaymentToken"
+      ]
+    },
+    "/home/jpag/Playground/consensus/contracts/MockAave.sol": {
+      "lastModificationDate": 1747366442519,
+      "contentHash": "47a22d70ef22c14870cbe004f9ef0575",
+      "sourceName": "contracts/MockAave.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MockAToken",
+        "MockAsset",
+        "MockLendingPool"
       ]
     }
   }

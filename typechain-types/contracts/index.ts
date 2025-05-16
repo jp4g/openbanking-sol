@@ -3,6 +3,8 @@
 /* eslint-disable */
 import type * as escrowSol from "./Escrow.sol";
 export type { escrowSol };
+import type * as mockAaveSol from "./MockAave.sol";
+export type { mockAaveSol };
 import type * as verifierSol from "./Verifier.sol";
 export type { verifierSol };
 export type { PaymentToken } from "./PaymentToken";
