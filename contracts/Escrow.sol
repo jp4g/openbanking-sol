@@ -64,6 +64,13 @@ contract OBEscrow {
         escrow.amount += transferredAmount; // Track total supplied by user
     }
 
+    /**
+     * Withdraws tokens from the escrow after proof verification.
+     * @param _proof The zero-knowledge proof for withdrawal verification.
+     * @param _amount The amount to withdraw (in proof output units, will be scaled).
+     * @param _commitment Identifier for the user's specific escrowed funds/commitment.
+     * @param _from The address whose escrowed funds are being withdrawn (typically msg.sender).
+     */
     function withdraw(
         bytes calldata _proof, // Proof verification needs to be integrated
         uint256 _amount,
@@ -96,6 +103,12 @@ contract OBEscrow {
         escrow.amount -= _amount;
     }
 
+    /**
+     * Verifies a zero-knowledge proof with the provided public inputs.
+     * @param _proof The zero-knowledge proof to verify.
+     * @param _publicInputs The public inputs for the proof verification.
+     * @return bool True if the proof is valid, false otherwise.
+     */
     function verifyTest(
         bytes calldata _proof,
         bytes32[] calldata _publicInputs
