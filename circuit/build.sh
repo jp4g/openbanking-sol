@@ -8,7 +8,7 @@ fi
 
 
 echo "Generating solidity verifier..."
-bb write_vk_ultra_keccak_honk -b target/noir_solidity.json
+bb write_vk_ultra_keccak_honk -b target/openbanking.json
 bb contract_ultra_honk
 
 mv target/contract.sol ../contracts/Verifier.sol

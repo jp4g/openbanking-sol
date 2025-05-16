@@ -68,7 +68,7 @@ contract OBEscrow {
 
     function verifyTest(
         bytes calldata _proof,
-        uint256 x
+        bytes32[] calldata _publicInputs
     )
         public
         view
@@ -76,12 +76,12 @@ contract OBEscrow {
             bool
         )
     {
-        bytes32[] memory publicInputs = new bytes32[](1);
-        publicInputs[0] = bytes32(x);
+        // bytes32[] memory publicInputs = new bytes32[](1);
+        // publicInputs[0] = bytes32(x);
         // publicInputs[0] = bytes32(_commitment);
         // publicInputs[1] = bytes32(_amount);
         // verify the proof
-        // return verifier.verify(_proof, _publicInputs);
-        return verifier.verify(_proof, publicInputs);
+        return verifier.verify(_proof, _publicInputs);
+        // return verifier.verify(_proof, publicInputs);
     }
 }

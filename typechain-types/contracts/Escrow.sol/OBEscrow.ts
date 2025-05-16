@@ -47,7 +47,7 @@ export interface OBEscrowInterface extends Interface {
   encodeFunctionData(functionFragment: "verifier", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "verifyTest",
-    values: [BytesLike, BigNumberish]
+    values: [BytesLike, BytesLike[]]
   ): string;
   encodeFunctionData(
     functionFragment: "withdraw",
@@ -125,7 +125,7 @@ export interface OBEscrow extends BaseContract {
   verifier: TypedContractMethod<[], [string], "view">;
 
   verifyTest: TypedContractMethod<
-    [_proof: BytesLike, x: BigNumberish],
+    [_proof: BytesLike, _publicInputs: BytesLike[]],
     [boolean],
     "view"
   >;
@@ -168,7 +168,7 @@ export interface OBEscrow extends BaseContract {
   getFunction(
     nameOrSignature: "verifyTest"
   ): TypedContractMethod<
-    [_proof: BytesLike, x: BigNumberish],
+    [_proof: BytesLike, _publicInputs: BytesLike[]],
     [boolean],
     "view"
   >;

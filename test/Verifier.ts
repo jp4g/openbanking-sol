@@ -7,7 +7,7 @@ import fs from "fs";
 import { BarretenbergSync, Fr, splitHonkProof, UltraHonkBackend } from "@aztec/bb.js";
 import { Noir } from "@noir-lang/noir_js";
 import { X509Certificate } from 'crypto'
-import { describe, it } from "mocha";
+// import { describe, it } from "mocha";
 import { generateNoirInputs } from "./utils/inputs";
 
 import circuit from "../circuit/target/openbanking.json";
@@ -91,8 +91,8 @@ describe("Test Verifier", function () {
             // console.log("returnValue", BigInt(returnValue[1]))
 
             const verified = await escrowContract.verifyTest(
-                proof,
-                1
+                proof.slice(4),
+                publicInputs
             );
             // console.log("Verified: ", verified)
             // 5. Withdrawing with proof
