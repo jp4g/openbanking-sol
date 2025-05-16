@@ -27,7 +27,13 @@ export interface OBEscrowInterface extends Interface {
       | "aavePool"
       | "deposit"
       | "escrowData"
+      | "isWhitelisted"
+      | "ofacSanction"
       | "paymentToken"
+      | "register"
+      | "rulesEngineAddress"
+      | "setCallingContractAdmin"
+      | "setRulesEngineAddress"
       | "verifier"
       | "verifyTest"
       | "withdraw"
@@ -43,8 +49,32 @@ export interface OBEscrowInterface extends Interface {
     values: [AddressLike]
   ): string;
   encodeFunctionData(
+    functionFragment: "isWhitelisted",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "ofacSanction",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "paymentToken",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "register",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "rulesEngineAddress",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setCallingContractAdmin",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setRulesEngineAddress",
+    values: [AddressLike]
   ): string;
   encodeFunctionData(functionFragment: "verifier", values?: undefined): string;
   encodeFunctionData(
@@ -53,14 +83,35 @@ export interface OBEscrowInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "withdraw",
-    values: [BytesLike, BigNumberish, BigNumberish, AddressLike]
+    values: [BytesLike, BigNumberish, BigNumberish, AddressLike, AddressLike]
   ): string;
 
   decodeFunctionResult(functionFragment: "aavePool", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "escrowData", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "isWhitelisted",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "ofacSanction",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "paymentToken",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "register", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "rulesEngineAddress",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setCallingContractAdmin",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setRulesEngineAddress",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "verifier", data: BytesLike): Result;
@@ -125,7 +176,27 @@ export interface OBEscrow extends BaseContract {
     "view"
   >;
 
+  isWhitelisted: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+
+  ofacSanction: TypedContractMethod<[], [string], "view">;
+
   paymentToken: TypedContractMethod<[], [string], "view">;
+
+  register: TypedContractMethod<[_user: AddressLike], [void], "nonpayable">;
+
+  rulesEngineAddress: TypedContractMethod<[], [string], "view">;
+
+  setCallingContractAdmin: TypedContractMethod<
+    [callingContractAdmin: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
+  setRulesEngineAddress: TypedContractMethod<
+    [rulesEngine: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
   verifier: TypedContractMethod<[], [string], "view">;
 
@@ -140,7 +211,8 @@ export interface OBEscrow extends BaseContract {
       _proof: BytesLike,
       _amount: BigNumberish,
       _commitment: BigNumberish,
-      _from: AddressLike
+      _from: AddressLike,
+      _to: AddressLike
     ],
     [void],
     "nonpayable"
@@ -168,8 +240,30 @@ export interface OBEscrow extends BaseContract {
     "view"
   >;
   getFunction(
+    nameOrSignature: "isWhitelisted"
+  ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "ofacSanction"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
     nameOrSignature: "paymentToken"
   ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "register"
+  ): TypedContractMethod<[_user: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "rulesEngineAddress"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "setCallingContractAdmin"
+  ): TypedContractMethod<
+    [callingContractAdmin: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "setRulesEngineAddress"
+  ): TypedContractMethod<[rulesEngine: AddressLike], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "verifier"
   ): TypedContractMethod<[], [string], "view">;
@@ -187,7 +281,8 @@ export interface OBEscrow extends BaseContract {
       _proof: BytesLike,
       _amount: BigNumberish,
       _commitment: BigNumberish,
-      _from: AddressLike
+      _from: AddressLike,
+      _to: AddressLike
     ],
     [void],
     "nonpayable"

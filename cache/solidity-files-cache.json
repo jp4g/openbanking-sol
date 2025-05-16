@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/jpag/Playground/consensus/contracts/Escrow.sol": {
-      "lastModificationDate": 1747367469317,
-      "contentHash": "bf9afc6c94217b32cdf60d0b09c0927d",
+    "/home/jpag/Playground/openbanking-sol/contracts/Escrow.sol": {
+      "lastModificationDate": 1747408467497,
+      "contentHash": "c7479de07e1e7e13728a38dd8f2c915b",
       "sourceName": "contracts/Escrow.sol",
       "solcConfig": {
         "version": "0.8.27",
@@ -30,8 +30,12 @@
         }
       },
       "imports": [
+        "./RulesEngineIntegration.sol",
+        "./RulesEngineIntegration.sol",
         "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-        "./Verifier.sol"
+        "@thrackle-io/forte-rules-engine/src/client/RulesEngineClient.sol",
+        "./Verifier.sol",
+        "./MockOfacSanction.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
@@ -41,8 +45,47 @@
         "OBEscrow"
       ]
     },
-    "/home/jpag/Playground/consensus/contracts/Verifier.sol": {
-      "lastModificationDate": 1747366909219,
+    "/home/jpag/Playground/openbanking-sol/contracts/RulesEngineIntegration.sol": {
+      "lastModificationDate": 1747407689800,
+      "contentHash": "c7bc577ec664abe3e1cae32dd883fae2",
+      "sourceName": "contracts/RulesEngineIntegration.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@thrackle-io/forte-rules-engine/src/client/RulesEngineClient.sol",
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "RulesEngineClientCustom"
+      ]
+    },
+    "/home/jpag/Playground/openbanking-sol/contracts/Verifier.sol": {
+      "lastModificationDate": 1747405113855,
       "contentHash": "93a29d4373113ae74f4913fa4a42c482",
       "sourceName": "contracts/Verifier.sol",
       "solcConfig": {
@@ -84,8 +127,82 @@
         "TranscriptLib"
       ]
     },
-    "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1747365624155,
+    "/home/jpag/Playground/openbanking-sol/contracts/MockOfacSanction.sol": {
+      "lastModificationDate": 1747406554954,
+      "contentHash": "99ff5f9740eb563645ed9a57ac4c45f4",
+      "sourceName": "contracts/MockOfacSanction.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "OfacSanction"
+      ]
+    },
+    "/home/jpag/Playground/openbanking-sol/node_modules/@thrackle-io/forte-rules-engine/src/client/RulesEngineClient.sol": {
+      "lastModificationDate": 1747406321225,
+      "contentHash": "a6bc7a43be6a2275ab3e2ffd79f27ead",
+      "sourceName": "@thrackle-io/forte-rules-engine/src/client/RulesEngineClient.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IRulesEngine.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "RulesEngineClient"
+      ]
+    },
+    "/home/jpag/Playground/openbanking-sol/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1747404967585,
       "contentHash": "8f19f64d2adadf448840908bbaf431c8",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
@@ -120,8 +237,80 @@
         "IERC20"
       ]
     },
-    "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1747365624737,
+    "/home/jpag/Playground/openbanking-sol/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1747404965497,
+      "contentHash": "681c532e816169606d13a5fe8b475074",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    },
+    "/home/jpag/Playground/openbanking-sol/node_modules/@thrackle-io/forte-rules-engine/src/client/IRulesEngine.sol": {
+      "lastModificationDate": 1747406321225,
+      "contentHash": "80796caf8967207a6d1c8ccf2d12e93e",
+      "sourceName": "@thrackle-io/forte-rules-engine/src/client/IRulesEngine.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.13"
+      ],
+      "artifacts": [
+        "IRulesEngine"
+      ]
+    },
+    "/home/jpag/Playground/openbanking-sol/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "lastModificationDate": 1747404968545,
       "contentHash": "794db3115001aa372c79326fcfd44b1f",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
@@ -158,8 +347,8 @@
         "IERC20Metadata"
       ]
     },
-    "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1747365624155,
+    "/home/jpag/Playground/openbanking-sol/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+      "lastModificationDate": 1747404967585,
       "contentHash": "57d79df281f57bbb1b09214c7914f877",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -199,8 +388,8 @@
         "ERC20"
       ]
     },
-    "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1747365622697,
+    "/home/jpag/Playground/openbanking-sol/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1747404966166,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -235,8 +424,8 @@
         "Context"
       ]
     },
-    "/home/jpag/Playground/consensus/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
-      "lastModificationDate": 1747365622696,
+    "/home/jpag/Playground/openbanking-sol/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
+      "lastModificationDate": 1747404966162,
       "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
@@ -273,8 +462,8 @@
         "IERC721Errors"
       ]
     },
-    "/home/jpag/Playground/consensus/contracts/PaymentToken.sol": {
-      "lastModificationDate": 1747326276532,
+    "/home/jpag/Playground/openbanking-sol/contracts/PaymentToken.sol": {
+      "lastModificationDate": 1747404913233,
       "contentHash": "fd0eb48022c568e9105ee783667b8290",
       "sourceName": "contracts/PaymentToken.sol",
       "solcConfig": {
@@ -311,9 +500,9 @@
         "PaymentToken"
       ]
     },
-    "/home/jpag/Playground/consensus/contracts/MockAave.sol": {
-      "lastModificationDate": 1747366442519,
-      "contentHash": "47a22d70ef22c14870cbe004f9ef0575",
+    "/home/jpag/Playground/openbanking-sol/contracts/MockAave.sol": {
+      "lastModificationDate": 1747404913233,
+      "contentHash": "fd821bdab8d5304b5ab4cf29e243184f",
       "sourceName": "contracts/MockAave.sol",
       "solcConfig": {
         "version": "0.8.27",

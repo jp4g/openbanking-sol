@@ -38,6 +38,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
+      name: "IRulesEngine",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IRulesEngine__factory>;
+    getContractFactory(
+      name: "RulesEngineClient",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.RulesEngineClient__factory>;
+    getContractFactory(
       name: "IAavePool",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IAavePool__factory>;
@@ -58,9 +66,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.MockLendingPool__factory>;
     getContractFactory(
+      name: "OfacSanction",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.OfacSanction__factory>;
+    getContractFactory(
       name: "PaymentToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.PaymentToken__factory>;
+    getContractFactory(
+      name: "RulesEngineClientCustom",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.RulesEngineClientCustom__factory>;
     getContractFactory(
       name: "HonkVerifier",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -101,6 +117,16 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20>;
     getContractAt(
+      name: "IRulesEngine",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IRulesEngine>;
+    getContractAt(
+      name: "RulesEngineClient",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.RulesEngineClient>;
+    getContractAt(
       name: "IAavePool",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -126,10 +152,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.MockLendingPool>;
     getContractAt(
+      name: "OfacSanction",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.OfacSanction>;
+    getContractAt(
       name: "PaymentToken",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.PaymentToken>;
+    getContractAt(
+      name: "RulesEngineClientCustom",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.RulesEngineClientCustom>;
     getContractAt(
       name: "HonkVerifier",
       address: string | ethers.Addressable,
@@ -166,6 +202,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
+      name: "IRulesEngine",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IRulesEngine>;
+    deployContract(
+      name: "RulesEngineClient",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.RulesEngineClient>;
+    deployContract(
       name: "IAavePool",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IAavePool>;
@@ -186,9 +230,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.MockLendingPool>;
     deployContract(
+      name: "OfacSanction",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.OfacSanction>;
+    deployContract(
       name: "PaymentToken",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PaymentToken>;
+    deployContract(
+      name: "RulesEngineClientCustom",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.RulesEngineClientCustom>;
     deployContract(
       name: "HonkVerifier",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -229,6 +281,16 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
+      name: "IRulesEngine",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IRulesEngine>;
+    deployContract(
+      name: "RulesEngineClient",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.RulesEngineClient>;
+    deployContract(
       name: "IAavePool",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -254,10 +316,20 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.MockLendingPool>;
     deployContract(
+      name: "OfacSanction",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.OfacSanction>;
+    deployContract(
       name: "PaymentToken",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PaymentToken>;
+    deployContract(
+      name: "RulesEngineClientCustom",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.RulesEngineClientCustom>;
     deployContract(
       name: "HonkVerifier",
       args: any[],

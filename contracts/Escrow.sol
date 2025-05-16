@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+import "./RulesEngineIntegration.sol";
+import "./RulesEngineIntegration.sol";
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@thrackle-io/forte-rules-engine/src/client/RulesEngineClient.sol";
 import "./Verifier.sol";
+import "./MockOfacSanction.sol";
 
 // Interface for Aave Pool
 interface IAavePool {
@@ -20,12 +24,14 @@ interface IAavePool {
     ) external returns (uint256);
 }
 
-contract OBEscrow {
+
+contract OBEscrow is RulesEngineClientCustom {
 
     address public paymentToken;
     IAavePool public aavePool;
+    OfacSanction public ofacSanction;
     HonkVerifier public verifier = new HonkVerifier();
-
+    mapping(address => bool) public isWhitelisted;
 
     struct EscrowData {
         uint256 amount; // Represents amount of underlying asset supplied to Aave
@@ -34,14 +40,27 @@ contract OBEscrow {
 
     mapping(address => EscrowData) public escrowData;
 
-    constructor(address _paymentToken, address _aavePoolAddress) {
-        require(_paymentToken != address(0), "Invalid payment token address");
-        require(_aavePoolAddress != address(0), "Invalid Aave Pool address");
-        paymentToken = _paymentToken;
-        aavePool = IAavePool(_aavePoolAddress);
+    modifier onlyWhitelisted() {
+        require(isWhitelisted[msg.sender], "Not whitelisted");
+        _;
     }
 
-    function deposit(uint256 _amount, uint256 _commitment) external {
+    function register(address _user) external checkRulesBeforeregister(_user) {
+        require(_user == msg.sender, "Only the user can register themselves");
+        require(!ofacSanction.isBlacklisted(_user), "User is blacklisted");
+        isWhitelisted[_user] = true;
+    }
+
+    constructor(address _paymentToken, address _aavePoolAddress, address _ofacSanctionAddress) {
+        require(_paymentToken != address(0), "Invalid payment token address");
+        require(_aavePoolAddress != address(0), "Invalid Aave Pool address");
+        require(_ofacSanctionAddress != address(0), "Invalid OFAC Sanction address");
+        paymentToken = _paymentToken;
+        aavePool = IAavePool(_aavePoolAddress);
+        ofacSanction = OfacSanction(_ofacSanctionAddress);
+    }
+
+    function deposit(uint256 _amount, uint256 _commitment) external onlyWhitelisted {
         require(_amount > 0, "Amount must be greater than zero");
 
         // 1. Transfer tokens from user to this escrow contract
@@ -75,8 +94,11 @@ contract OBEscrow {
         bytes calldata _proof, // Proof verification needs to be integrated
         uint256 _amount,
         uint256 _commitment, // Identifier for the user's specific escrowed funds/commitment
-        address _from // Original design had _from; for simplicity, assuming msg.sender withdraws their own
-    ) external {
+        address _from,
+        address _to
+    ) external onlyWhitelisted {
+        // 0: check to is msg sender (used for forte ofac rule)
+        require(_to == msg.sender, "Only the sender can withdraw");
         // 1: verify proof
         bytes32[] memory publicInputs = new bytes32[](2);
         publicInputs[0] = bytes32(_commitment);

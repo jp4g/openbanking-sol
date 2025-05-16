@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as openzeppelin from "./@openzeppelin";
+export * as thrackleIo from "./@thrackle-io";
 export * as contracts from "./contracts";

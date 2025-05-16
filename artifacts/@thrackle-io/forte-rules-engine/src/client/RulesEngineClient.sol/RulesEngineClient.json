@@ -1,0 +1,50 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "RulesEngineClient",
+  "sourceName": "@thrackle-io/forte-rules-engine/src/client/RulesEngineClient.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "rulesEngineAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "callingContractAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "setCallingContractAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "rulesEngine",
+          "type": "address"
+        }
+      ],
+      "name": "setRulesEngineAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

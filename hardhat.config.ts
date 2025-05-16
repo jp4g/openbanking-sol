@@ -20,6 +20,15 @@ const config: HardhatUserConfig = {
       },
       allowUnlimitedContractSize: true
     },
+    local: {
+      url: "http://localhost:8545",
+      chainId: 31337, // Local network chain ID
+      accounts: {
+        mnemonic: "test test test test test test test test test test test junk",
+        count: 10, // Number of test accounts
+      },
+      allowUnlimitedContractSize: true
+    },
   },
   paths: {
     sources: "./contracts",

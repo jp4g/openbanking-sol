@@ -1,9 +1,10 @@
 {
   "name": "hardhat-project",
   "scripts": {
-    "test": "hardhat test test/Verifier.ts",
+    "test": "hardhat test test/Verifier.ts --network local",
     "compile:circuit": "./scripts/compile_circuit.sh",
-    "preinstall": "./scripts/preinstall.sh"
+    "preinstall": "./scripts/preinstall.sh",
+    "deploy": "hardhat ignition deploy ignition/modules/deploy.ts --network local"
   },
   "devDependencies": {
     "@aztec/bb.js": "0.67.0",
@@ -32,6 +33,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.3.0",
+    "@thrackle-io/forte-rules-engine": "^0.0.1-rc.0",
     "@zk-email/zkemail-nr": "^1.3.1",
     "mocha": "^11.2.2",
     "typescript": "^5.8.3"

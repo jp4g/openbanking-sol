@@ -1,0 +1,28 @@
+{
+  "Policy": "OFAC Mock Blacklist Policy",
+  "ForeignCalls": [
+    {
+      "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "signature": "isBlacklisted(address)",
+      "returnType": "bool",
+      "parameterTypes": "address",
+      "encodedIndices": "0"
+    }
+  ],
+  "Trackers": [
+    {
+      "name": "trackerOne",
+      "type": "uint256",
+      "defaultValue": 1
+    }
+  ],
+  "RulesJSON": [
+    {
+      "condition": "FC:isBlacklisted(to) == 1",
+      "positiveEffects": ["revert(\"Registration failed: is blacklisted\")"],
+      "negativeEffects": [],
+      "functionSignature": "register(address _user)",
+      "encodedValues": "address _user"
+    }
+  ]
+}
