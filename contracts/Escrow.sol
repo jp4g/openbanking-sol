@@ -88,11 +88,9 @@ contract OBEscrow {
 
 
         // 1. Withdraw from Aave Pool to this escrow contract
-        // Aave's withdraw function might revert if _amountToWithdraw > balance in Aave
         uint256 actualWithdrawnAmount = aavePool.withdraw(paymentToken, _amountToWithdraw, address(this));
-        // The actualWithdrawnAmount could be less if Aave has an issue, though typically it's the amount requested or revert.
-        // For safety, ensuring it matches or handling discrepancies:
-        require(actualWithdrawnAmount == _amountToWithdraw, "Aave withdrawal failed or did not return expected amount");
+        // The actualWithdrawnAmount includes the yield, so we don't need to check for exact match
+        require(actualWithdrawnAmount >= _amountToWithdraw, "Aave withdrawal failed");
 
         // 2. Transfer tokens from this escrow contract to the msg.sender (recipient)
         require(
@@ -101,7 +99,7 @@ contract OBEscrow {
         );
 
         // 3. Update escrow data
-        escrow.amount -= actualWithdrawnAmount;
+        escrow.amount -= _amountToWithdraw;
 
         // If a commitment is tied to a specific deposit and should be cleared or reduced:
         // if (escrow.amount == 0) {

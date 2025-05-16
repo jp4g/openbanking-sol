@@ -28,11 +28,11 @@ library HonkVerificationKey {
                y: uint256(0x0b130591d3eb963157025f812add1d054afc9aba7a6cac2c3749e14eaf71c4f1)
             }),
             qm: Honk.G1Point({ 
-               x: uint256(0x00e3e17c7000007fcd3846e16e00000000e3e6172400007fcde3e04d3c000000),
-               y: uint256(0x00000000000000000004bf9a5000007ffee40b722800007fcde41ed5a000007f)
+               x: uint256(0x00ac6c565d18565315c3bcf77a43cc3debd05e4e0b176382303e7f6c69b57a79),
+               y: uint256(0x062eeb40ea42e07877d457294f8aa8c91fa40b4ea70ab3b293eda5d8d36fb1f2)
             }),
             qc: Honk.G1Point({ 
-               x: uint256(0x0b84fcbbd1ff6bcad9880bb39dc7e804217bc750682994e68d3369896c65f5f4),
+               x: uint256(0x0a84fcbbd1ff6bcad9880bb39dc7e804217bc750682994e68d3369896c65f5f4),
                y: uint256(0x02e0de120112ac2336cf5fd7e67b34b5aa0733bf11914c634f385cba580bb025)
             }),
             qArith: Honk.G1Point({ 
@@ -123,8 +123,6 @@ library HonkVerificationKey {
         return vk;
     }
 }
-
-pragma solidity ^0.8.27;
 
 type Fr is uint256;
 
